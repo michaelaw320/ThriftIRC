@@ -33,7 +33,7 @@ public class IRCServiceHandler implements IRCService.Iface {
 
     @Override
     public boolean sendMessage(String channelName, String nick, String theMessage, int timestamp) throws TException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
     
 }

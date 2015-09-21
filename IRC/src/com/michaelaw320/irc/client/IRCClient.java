@@ -38,7 +38,7 @@ public class IRCClient {
    TProtocol protocol = new TBinaryProtocol(transport);
    IRCService.Client client = new IRCService.Client(protocol);
 
-   //System.out.println(client.add(100, 200));
+   System.out.println(client.sendMessage("ASD", "ASD", "ASD", 1));
 
    transport.close();
     } catch (TTransportException e) {
