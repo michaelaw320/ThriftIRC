@@ -17,14 +17,59 @@
  */
 package com.michaelaw320.irc.utils;
 
-import java.io.Serializable;
 
 /**
  *
  * @author Michael
  */
-public class IRCMessage implements Serializable {
+public class IRCMessage {
     private String nick;
     private String text;
     private int timestamp;
+    
+    public IRCMessage() {
+        
+    }
+    
+    public IRCMessage(String nick, String text, int timestamp) {
+        this.nick = nick;
+        this.text = text;
+        this.timestamp = timestamp;
+    }
+    
+    @Override
+    public String toString() {
+        return nick + '\n' + text + "\n" + Integer.toString(timestamp);
+    }
+    
+    public void parseString(String str) {
+        String[] split = str.split("\n");
+        nick = split[0];
+        text = split[1];
+        timestamp = Integer.parseInt(split[2]);
+    }
+    
+    public String getNick() {
+        return nick;
+    }
+    
+    public String getText() {
+        return text;
+    }
+    
+    public int getTimestamp() {
+        return timestamp;
+    }
+    
+    public void setNick(String n) {
+        nick = n;
+    }
+    
+    public void setText(String tex) {
+        text = tex;
+    }
+    
+    public void setTimestamp(long time) {
+        timestamp = (int) time;
+    }
 }
