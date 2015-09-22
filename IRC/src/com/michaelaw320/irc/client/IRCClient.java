@@ -137,6 +137,23 @@ public class IRCClient {
                build = "["+chatRoom+"]"+ "("+ClientStates.NICKNAME+")" + message;
                System.out.println(build);
            }
+       } else if (ClientStates.NICKNAME != "") {
+           String message;
+           String chatRoom;
+           int timestamp = (int) (System.currentTimeMillis() / 1000);
+           message = input;
+           for(ChannelState currentChannel : JOINED_CHANNELS) {
+               chatRoom = currentChannel.ChannelName;
+               if (!client.sendMessage(chatRoom, ClientStates.NICKNAME, message, timestamp)) {
+                    //System.out.println("Ruangan chat yang anda masukkan tidak ada");
+               } else
+                {
+                    ClientStates.getChannelState(chatRoom).LastMsgTimestamp = timestamp;
+                    String build;
+                    build = "["+chatRoom+"]"+ "("+ClientStates.NICKNAME+")" + message;
+                    System.out.println(build);
+                }
+           }
        }
                
    }
